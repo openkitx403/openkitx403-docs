@@ -271,3 +271,4 @@ function scrollToSection(sectionId) {
 
 // Export for use in HTML
 window.scrollToSection = scrollToSection;
+
