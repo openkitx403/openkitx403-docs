@@ -1,19 +1,32 @@
-# OpenKitx403 Documentation
+# OpenKitx403 Documentation Website
 
-Production-ready documentation website for OpenKitx403 - HTTP-native wallet authentication protocol for Solana.
+Production-ready documentation for OpenKitx403 - HTTP-native wallet authentication protocol for Solana with AI Agent support.
 
-## Features
+## Documentation Sections
 
-- **Dark Theme:** Professional dark UI inspired by modern Web3 design
-- **Responsive:** Mobile-first design that works on all devices
-- **Table of Contents:** Sticky sidebar navigation with scroll spy
-- **Code Highlighting:** Syntax highlighting for TypeScript, Python, Bash, JSON
-- **Copy to Clipboard:** One-click code copying from examples
-- **Developer-Focused:** In-depth guides, API references, and examples
+### Protocol & Installation
+- **Overview** - What is OpenKitx403
+- **How It Works** - 5-step authentication flow
+- **Quick Start** - Get up and running in 5 minutes
+- **Installation** - Client, Server, and Agent SDKs
 
-## Quick Start
+### Guides
+- **Client SDK** - Browser and Node.js authentication
+- **Server SDK** - FastAPI middleware integration
+- **Protocol Specification** - Technical protocol details
+- **Examples** - Real-world implementation examples
 
-### Option 1: Open Directly
+### AI Agents & Automation
+- **Installation** - Agent SDK setup
+- **Quick Start** - Create your first agent
+- **Wallet Management** - Generate, import, export wallets
+- **LangChain Integration** - Build LLM-powered agents
+- **Multi-Agent Coordination** - Run multiple agents
+- **Trading Agent** - Complete trading bot example
 
-Simply open `index.html` in your browser:
+### Security & Advanced
+- **Security Model** - Cryptographic design
+- **Security Best Practices** - Production recommendations
+- **Advanced Topics** - Token-gating, rate limiting, multi-tenancy
+- **API Reference** - Complete method reference
 
