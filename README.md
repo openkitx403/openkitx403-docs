@@ -29,4 +29,3 @@ Production-ready documentation for OpenKitx403 - HTTP-native wallet authenticati
 - **Security Best Practices** - Production recommendations
 - **Advanced Topics** - Token-gating, rate limiting, multi-tenancy
 - **API Reference** - Complete method reference
-
