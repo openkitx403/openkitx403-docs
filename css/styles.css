@@ -62,7 +62,7 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    font-size: 0.9375rem; /* 15px on mobile */
+    font-size: 0.9375rem;
     overflow-x: hidden;
 }
 
@@ -136,14 +136,14 @@ body {
     opacity: 1;
 }
 
-/* Header - Mobile First */
+/* Header - Mobile First with increased z-index */
 .header {
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-sm) 0;
+    padding: var(--spacing-md) 0;
     position: sticky;
     top: 0;
-    z-index: 900;
+    z-index: 1200;
 }
 
 .header-content {
@@ -151,18 +151,33 @@ body {
     flex-direction: column;
     gap: var(--spacing-sm);
     align-items: center;
-    padding-top: 3rem; /* Space for mobile menu button */
+    padding-top: 3rem;
 }
 
 .logo {
     text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .logo h1 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
 }
 
 .protocol-status {
@@ -175,6 +190,7 @@ body {
     border-radius: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-top: 0.5rem;
 }
 
 .header-nav {
@@ -205,7 +221,7 @@ body {
     padding-bottom: var(--spacing-lg);
 }
 
-/* Sidebar - Mobile First (Hidden, Toggle with Button) */
+/* Sidebar - Mobile First with proper z-index management */
 .sidebar {
     position: fixed;
     top: 0;
@@ -430,7 +446,8 @@ pre {
     padding: var(--spacing-sm);
     overflow-x: auto;
     margin: var(--spacing-md) 0;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    position: relative;
 }
 
 pre code {
@@ -474,7 +491,7 @@ pre code {
 
 .step-content {
     flex: 1;
-    min-width: 0; /* Prevent overflow */
+    min-width: 0;
 }
 
 .step-content h3 {
@@ -510,7 +527,7 @@ pre code {
 
 .config-table {
     width: 100%;
-    min-width: 600px; /* Minimum width before horizontal scroll */
+    min-width: 600px;
     border-collapse: collapse;
     background: var(--bg-tertiary);
     border-radius: 6px;
@@ -726,6 +743,10 @@ pre code {
         display: none;
     }
     
+    .header {
+        z-index: 1200;
+    }
+    
     .header-content {
         flex-direction: row;
         justify-content: space-between;
@@ -734,10 +755,21 @@ pre code {
     
     .logo {
         text-align: left;
+        margin-top: 0;
+    }
+    
+    .logo-wrapper {
+        justify-content: flex-start;
+    }
+    
+    .logo-img {
+        width: 42px;
+        height: 42px;
     }
     
     .logo h1 {
         font-size: 1.5rem;
+        margin-bottom: 0;
     }
     
     .header-nav {
@@ -754,6 +786,7 @@ pre code {
         max-height: calc(100vh - 120px);
         padding-top: 0;
         overflow-y: auto;
+        z-index: 100;
     }
     
     .main-container {
@@ -821,6 +854,15 @@ pre code {
     
     .content {
         max-width: 900px;
+    }
+    
+    .logo-img {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .logo h1 {
+        font-size: 1.6rem;
     }
     
     .doc-section h1 {
