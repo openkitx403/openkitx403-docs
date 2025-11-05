@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="css/prism.css">
 </head>
 <body>
+    <!-- Mobile Menu Toggle -->
     <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
         <span></span>
         <span></span>
         <span></span>
     </button>
 
+    <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -33,7 +36,9 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <div class="container main-container">
+        <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-sticky">
                 <div class="toc-header">Documentation</div>
@@ -73,44 +78,48 @@
                                 <li><a href="#spec-verification">Verification</a></li>
                             </ul>
                         </li>
-                        <li><a href="#langchain">LangChain Integration</a></li>
+                        <li>
+                            <a href="#langchain">LangChain & AI Agents</a>
+                        </li>
                         <li><a href="#security">Security</a></li>
-                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="#examples">Complete Examples</a></li>
                         <li><a href="#api-reference">API Reference</a></li>
                     </ul>
                 </nav>
             </div>
         </aside>
 
+        <!-- Main Documentation Content -->
         <main class="content">
+            <!-- Overview Section -->
             <section id="overview" class="doc-section">
                 <h1>OpenKitx403</h1>
                 <p class="subtitle">HTTP-native wallet authentication for Solana</p>
                 
                 <div class="feature-highlight">
-                    <p>OpenKitx403 standardizes HTTP 403 as a semantic challenge-response mechanism for Solana wallet authentication. Built for developers who need stateless, cryptographic authentication without central authorities.</p>
+                    <p>OpenKitx403 is an open-source, TypeScript-first protocol that standardizes <strong>HTTP 403</strong> as the semantic "prove you control this wallet" challenge for Solana wallet authentication.</p>
                 </div>
 
                 <div class="badges">
-                    <span class="badge">Open Source</span>
-                    <span class="badge">MIT License</span>
-                    <span class="badge">Production Ready</span>
-                    <span class="badge">Type-Safe</span>
+                    <span class="badge">✓ Open Source</span>
+                    <span class="badge">✓ MIT License</span>
+                    <span class="badge">✓ Production Ready</span>
+                    <span class="badge">✓ Type-Safe</span>
                 </div>
 
                 <h2>Features</h2>
                 <ul class="feature-list">
-                    <li><strong>HTTP-Native:</strong> Standard HTTP 403 challenges, no custom protocols</li>
-                    <li><strong>Stateless:</strong> No server-side sessions required</li>
+                    <li><strong>HTTP-Native:</strong> Uses standard HTTP 403 challenges, no custom protocols</li>
+                    <li><strong>Stateless:</strong> No required server-side sessions</li>
                     <li><strong>Secure:</strong> Ed25519 signatures with replay protection</li>
-                    <li><strong>Framework Support:</strong> Express, Fastify, and FastAPI middleware</li>
-                    <li><strong>Full SDKs:</strong> Complete TypeScript and Python implementations</li>
-                    <li><strong>LangChain Ready:</strong> Native integration for AI agents</li>
-                    <li><strong>Token-Gating:</strong> Built-in NFT/token verification</li>
+                    <li><strong>Easy to use:</strong> Drop-in middleware for Express, Fastify, and FastAPI</li>
+                    <li><strong>Production-ready:</strong> Full TypeScript and Python SDKs</li>
+                    <li><strong>AI-friendly:</strong> LangChain integration and agent support</li>
+                    <li><strong>Token-gating ready:</strong> Built-in support for NFT/token requirements</li>
                 </ul>
 
-                <h2>Why Use This Protocol?</h2>
-                <p>Web authentication typically requires centralized identity providers or persistent sessions. OpenKitx403 enables stateless, cryptographic wallet-based authentication using standard HTTP. Works with Phantom, Backpack, and Solflare.</p>
+                <h2>Why OpenKitx403?</h2>
+                <p>Traditional web authentication requires centralized identity providers or long-lived sessions. OpenKitx403 enables <strong>stateless, cryptographic wallet-based authentication</strong> using standard HTTP semantics. It works with Phantom, Backpack, and Solflare wallets.</p>
 
                 <div class="code-example">
                     <h3>Client Example</h3>
@@ -123,7 +132,7 @@ const result = await client.authenticate({
   resource: 'https://api.example.com/protected'
 });
 
-console.log('Authenticated as:', result.address);</code></pre>
+console.log('✅ Authenticated as:', result.address);</code></pre>
                 </div>
 
                 <div class="code-example">
@@ -147,9 +156,10 @@ app.get('/protected', (req, res) => {
                 </div>
             </section>
 
+            <!-- How It Works Section -->
             <section id="how-it-works" class="doc-section">
                 <h2>How It Works</h2>
-                <p>Standard challenge-response flow using HTTP 403:</p>
+                <p>OpenKitx403 follows a simple challenge-response authentication flow:</p>
 
                 <div class="flow-diagram">
                     <div class="flow-step">
@@ -165,7 +175,7 @@ app.get('/protected', (req, res) => {
                         <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Server Challenge</h3>
-                            <p>Server responds with 403 and challenge</p>
+                            <p>Server responds with 403 + challenge</p>
                             <code class="inline-code">WWW-Authenticate: OpenKitx403 ...</code>
                         </div>
                     </div>
@@ -174,7 +184,7 @@ app.get('/protected', (req, res) => {
                         <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>User Signs</h3>
-                            <p>Wallet signs the challenge message</p>
+                            <p>Wallet signs the challenge</p>
                             <code class="inline-code">Ed25519 signature</code>
                         </div>
                     </div>
@@ -198,13 +208,14 @@ app.get('/protected', (req, res) => {
                     </div>
                 </div>
 
-                <h3>Stateless Design</h3>
-                <p>Each request is verified cryptographically. No JWTs, no sessions, no central authority required.</p>
+                <h3>No JWTs, No Sessions, No Central Authority</h3>
+                <p>OpenKitx403 is stateless-by-design. The server verifies each request cryptographically without maintaining session state.</p>
             </section>
 
+            <!-- Quick Start Section -->
             <section id="quick-start" class="doc-section">
                 <h2>Quick Start</h2>
-                <p>Running in 5 minutes:</p>
+                <p>Get running in 5 minutes.</p>
 
                 <h3>1. Install Client</h3>
                 <pre><code class="language-bash">npm install @openkitx403/client</code></pre>
@@ -257,10 +268,11 @@ if (result.ok) {
 }</code></pre>
 
                 <div class="alert alert-info">
-                    <strong>Note:</strong> See the Examples section for complete implementations.
+                    <strong>💡 Tip:</strong> See the <a href="#examples">Complete Examples</a> section for more detailed implementations.
                 </div>
             </section>
 
+            <!-- Installation Section -->
             <section id="installation" class="doc-section">
                 <h2>Installation</h2>
 
@@ -283,7 +295,7 @@ if (result.ok) {
                 <ul>
                     <li>Express middleware</li>
                     <li>Fastify plugin</li>
-                    <li>Ed25519 verification (@noble/ed25519)</li>
+                    <li>Proper Ed25519 verification (@noble/ed25519)</li>
                     <li>In-memory replay store</li>
                 </ul>
 
@@ -301,20 +313,21 @@ poetry add openkitx403</code></pre>
                 </ul>
             </section>
 
+            <!-- Client SDK Section -->
             <section id="client-sdk" class="doc-section">
                 <h2>Client SDK</h2>
 
                 <h3 id="client-browser">Browser Usage</h3>
-                <p>Using with wallet extensions:</p>
+                <p>Using OpenKitx403 in browser with wallet extensions:</p>
 
                 <pre><code class="language-typescript">import { OpenKit403Client } from '@openkitx403/client';
 
 const client = new OpenKit403Client();
 
-// Connect to wallet
+// 1. Connect to wallet
 await client.connect('phantom'); // or 'backpack' or 'solflare'
 
-// Authenticate with API
+// 2. Authenticate with API
 const result = await client.authenticate({
   resource: 'https://api.example.com/protected',
   method: 'GET'
@@ -360,7 +373,7 @@ function App() {
 }</code></pre>
 
                 <h3 id="client-nodejs">Node.js Usage</h3>
-                <p>Using with Solana keypair:</p>
+                <p>Using OpenKitx403 in Node.js with Solana keypair:</p>
 
                 <pre><code class="language-typescript">import { Keypair } from '@solana/web3.js';
 import bs58 from 'bs58';
@@ -371,7 +384,7 @@ const keypair = Keypair.fromSecretKey(
   bs58.decode('YOUR_SECRET_KEY_BASE58')
 );
 
-// Get challenge
+// 1. Get challenge
 const response1 = await fetch('https://api.example.com/protected');
 
 if (response1.status === 403) {
@@ -379,7 +392,7 @@ if (response1.status === 403) {
   const challengeMatch = wwwAuth?.match(/challenge="([^"]+)"/);
   const challengeB64 = challengeMatch![1];
   
-  // Decode and sign challenge
+  // 2. Decode and sign challenge
   const challengeJson = Buffer.from(challengeB64, 'base64url').toString();
   const challenge = JSON.parse(challengeJson);
   
@@ -387,10 +400,10 @@ if (response1.status === 403) {
   const message = Buffer.from(signingString);
   const signature = nacl.sign.detached(message, keypair.secretKey);
   
-  // Build Authorization header
+  // 3. Build Authorization header
   const authHeader = `OpenKitx403 addr="${keypair.publicKey.toBase58()}", sig="${bs58.encode(signature)}", challenge="${challengeB64}", ts="${new Date().toISOString()}", nonce="${generateNonce()}", bind="GET:/protected"`;
   
-  // Retry with auth
+  // 4. Retry with auth
   const response2 = await fetch('https://api.example.com/protected', {
     headers: { 'Authorization': authHeader }
   });
@@ -399,6 +412,7 @@ if (response1.status === 403) {
 }</code></pre>
             </section>
 
+            <!-- Server SDK Section -->
             <section id="server-sdk" class="doc-section">
                 <h2>Server SDK</h2>
 
@@ -545,6 +559,7 @@ app.add_middleware(
 )</code></pre>
             </section>
 
+            <!-- Protocol Specification Section -->
             <section id="protocol-spec" class="doc-section">
                 <h2>Protocol Specification</h2>
 
@@ -566,7 +581,7 @@ Host: api.example.com
 Authorization: OpenKitx403 addr="5Gv8...", sig="3kYz...", challenge="eyJ2...", ts="2025-11-05T10:30:00Z", nonce="X8p2...", bind="GET:/protected"</code></pre>
 
                 <h3 id="spec-challenge">Challenge Format</h3>
-                <p>Challenge is a JSON object (base64url-encoded):</p>
+                <p>The challenge is a JSON object (base64url-encoded):</p>
 
                 <pre><code class="language-json">{
   "v": 1,
@@ -600,7 +615,7 @@ Authorization: OpenKitx403 addr="5Gv8...", sig="3kYz...", challenge="eyJ2...", t
                 </ul>
 
                 <h3>Signing String</h3>
-                <p>The signing string construction:</p>
+                <p>The signing string is constructed as follows:</p>
 
                 <pre><code class="language-text">OpenKitx403 Challenge
 
@@ -616,7 +631,7 @@ payload: {"alg":"ed25519-solana","aud":"https://api.example.com",...}</code></pr
                 <p>This string is signed with Ed25519 using the wallet's private key.</p>
 
                 <h3 id="spec-verification">Verification Algorithm</h3>
-                <p>Server verification steps:</p>
+                <p>The server verifies requests in 15 steps:</p>
 
                 <ol>
                     <li>Parse Authorization header</li>
@@ -637,13 +652,14 @@ payload: {"alg":"ed25519-solana","aud":"https://api.example.com",...}</code></pr
                 </ol>
 
                 <div class="alert alert-info">
-                    <strong>Full Specification:</strong> See <code>docs/COMPLETE_SPECIFICATION.md</code> for the complete RFC-style protocol specification.
+                    <strong>📖 Full Specification:</strong> See <code>docs/COMPLETE_SPECIFICATION.md</code> in the source package for the complete RFC-style protocol specification.
                 </div>
             </section>
 
+            <!-- LangChain & AI Agents Section -->
             <section id="langchain" class="doc-section">
-                <h2>LangChain Integration</h2>
-                <p>Native support for autonomous agents and LangChain tools.</p>
+                <h2>LangChain & AI Agents</h2>
+                <p>OpenKitx403 supports autonomous agents and LangChain tools for wallet authentication.</p>
 
                 <h3>LangChain Tool</h3>
                 <pre><code class="language-typescript">import { OpenKit403Client } from '@openkitx403/client';
@@ -752,6 +768,7 @@ await agent.executeTask({
 });</code></pre>
             </section>
 
+            <!-- Security Section -->
             <section id="security" class="doc-section">
                 <h2>Security</h2>
 
@@ -768,38 +785,39 @@ await agent.executeTask({
 
                 <h3>Best Practices</h3>
                 <ul>
-                    <li>Always use HTTPS in production</li>
-                    <li>Enable replay protection with replay store</li>
-                    <li>Use method/path binding for sensitive operations</li>
-                    <li>Set appropriate TTL (60s recommended)</li>
-                    <li>Implement rate limiting to prevent abuse</li>
-                    <li>Monitor for anomalies (unusual patterns, IPs)</li>
-                    <li>Keep dependencies updated</li>
+                    <li>✅ <strong>Always use HTTPS</strong> in production</li>
+                    <li>✅ <strong>Enable replay protection</strong> with replay store</li>
+                    <li>✅ <strong>Use method/path binding</strong> for sensitive operations</li>
+                    <li>✅ <strong>Set appropriate TTL</strong> (60s recommended)</li>
+                    <li>✅ <strong>Implement rate limiting</strong> to prevent abuse</li>
+                    <li>✅ <strong>Monitor for anomalies</strong> (unusual patterns, IPs)</li>
+                    <li>✅ <strong>Keep dependencies updated</strong></li>
                 </ul>
 
                 <h3>Threats Mitigated</h3>
                 <ul>
-                    <li>Replay attacks (nonce + TTL + replay store)</li>
-                    <li>Cross-endpoint replay (method/path binding)</li>
-                    <li>Cross-origin replay (origin binding)</li>
-                    <li>Clock skew attacks (timestamp validation)</li>
-                    <li>Unsigned requests (signature verification)</li>
+                    <li>✅ Replay attacks (nonce + TTL + replay store)</li>
+                    <li>✅ Cross-endpoint replay (method/path binding)</li>
+                    <li>✅ Cross-origin replay (origin binding)</li>
+                    <li>✅ Clock skew attacks (timestamp validation)</li>
+                    <li>✅ Unsigned requests (signature verification)</li>
                 </ul>
 
                 <h3>Limitations</h3>
                 <ul>
-                    <li>Does not protect against compromised wallets</li>
-                    <li>Does not prevent phishing attacks</li>
-                    <li>Requires user approval for each signature</li>
+                    <li>❌ Does not protect against compromised wallets</li>
+                    <li>❌ Does not prevent phishing attacks</li>
+                    <li>❌ Requires user approval for each signature</li>
                 </ul>
 
                 <div class="alert alert-warning">
-                    <strong>Security Notice:</strong> OpenKitx403 is for authentication, not message-level encryption. Always use HTTPS in production.
+                    <strong>⚠️ Security Notice:</strong> OpenKitx403 is for <strong>authentication</strong>, not message-level encryption. Always use HTTPS in production.
                 </div>
             </section>
 
+            <!-- Examples Section -->
             <section id="examples" class="doc-section">
-                <h2>Examples</h2>
+                <h2>Complete Examples</h2>
 
                 <h3>Browser + Express Full Stack</h3>
                 
@@ -905,17 +923,17 @@ import base58
 
 keypair = Keypair.generate()
 
-# Get challenge
+# 1. Get challenge
 response = requests.get("http://localhost:8000/protected")
 
 if response.status_code == 403:
     www_auth = response.headers.get('WWW-Authenticate')
     challenge_b64 = re.search(r'challenge="([^"]+)"', www_auth).group(1)
     
-    # Sign challenge (implementation details omitted for brevity)
+    # 2. Sign challenge (implementation details omitted for brevity)
     signature = sign_challenge(challenge_b64, keypair)
     
-    # Retry with auth
+    # 3. Retry with auth
     auth_header = build_auth_header(keypair.public_key, signature, challenge_b64)
     response = requests.get(
         "http://localhost:8000/protected",
@@ -925,10 +943,11 @@ if response.status_code == 403:
     print(response.json())</code></pre>
 
                 <div class="alert alert-info">
-                    <strong>More Examples:</strong> See <code>USAGE_EXAMPLES.md</code> in the source package for complete implementations including Node.js, Fastify, and agent patterns.
+                    <strong>📖 More Examples:</strong> See <code>USAGE_EXAMPLES.md</code> in the source package for 8 complete sections of examples including Node.js, Fastify, and agent patterns.
                 </div>
             </section>
 
+            <!-- API Reference Section -->
             <section id="api-reference" class="doc-section">
                 <h2>API Reference</h2>
 
@@ -1035,6 +1054,7 @@ async def protected(user: OpenKit403User = Depends(require_openkitx403_user)):
         </main>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1061,7 +1081,7 @@ async def protected(user: OpenKit403User = Depends(require_openkitx403_user)):
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Built for the Solana ecosystem</p>
+                <p>Built with ❤️ for the Solana ecosystem</p>
             </div>
         </div>
     </footer>
